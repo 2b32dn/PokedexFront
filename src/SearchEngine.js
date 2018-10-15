@@ -8,7 +8,7 @@ class SearchEngine extends Component {
     super();
     this.state = {
       searchInput: '',
-      pokemonData: ["pokemondata initial value"]
+      pokemonData: {}
     }
     // this.fetchPokeData = this.fetchPokeData.bind(this.pokemonData);
   }
@@ -23,7 +23,6 @@ class SearchEngine extends Component {
       mode: 'cors'
     })
      .then(res => res.json())
-    //  .then(resJSON => console.log(resJSON))
      .then(resJSON => this.setState({ pokemonData: resJSON }))
      .catch(err => console.log("Error", err) )
      this.setState({ searchInput: '' })
@@ -36,8 +35,7 @@ class SearchEngine extends Component {
           <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
           <input type='submit'/>
         </form>
-        {/* <div>{this.state.pokemonData.map((item)=><div>{item}</div>)}</div> */}
-        {console.log(this.state.pokemonData)}
+        <div>{Object.entries(this.state.pokemonData).map((item)=><div>{item}</div>)}</div>
         <PokedexInterface pokemonData={this.state.pokemonData}/>
       </Fragment>
     );
