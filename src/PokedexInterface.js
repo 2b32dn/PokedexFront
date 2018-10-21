@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import Abilities from './Abilities'
 
 class PokedexInterface extends Component {
   render() {
-    console.log(this.props.pokemonInfo)
+    const { abilities } = this.props.pokemonInfo
+    // console.log(pokemonInfo
     return ( 
       <div>
-        {/* {this.props.pokemonInfo.name} */}
+        {abilities && <Abilities abilities={abilities}/>}
       </div>
     );
   }

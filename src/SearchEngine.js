@@ -11,9 +11,6 @@ class SearchEngine extends Component {
       pokemonData: null
     }
   }
-  // componentDidMount = () => {
-  //   if(!this.state.pokemonData) {this.fetchPokeData()}
-  // }
   handleSearchInput = (e) => {
     this.setState({searchInput: e.target.value})
   }
@@ -32,14 +29,13 @@ class SearchEngine extends Component {
      this.setState({ searchInput: '' })
   }
   render() {
-    console.log(this.state.pokemonData)
     return (
       <Fragment>
         <form onSubmit={this.fetchPokeData}>
           <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
           <input type='submit'/>
         </form>
-        <PokedexInterface pokemonInfo={this.state.pokemonData}/>
+        {!this.state.pokemonData ? <div>No fetch</div>:<PokedexInterface pokemonInfo={this.state.pokemonData}/>}
       </Fragment>
     );
   }
