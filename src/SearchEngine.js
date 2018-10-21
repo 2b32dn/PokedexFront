@@ -8,10 +8,12 @@ class SearchEngine extends Component {
     super();
     this.state = {
       searchInput: '',
-      pokemonData: []
+      pokemonData: null
     }
   }
-
+  // componentDidMount = () => {
+  //   if(!this.state.pokemonData) {this.fetchPokeData()}
+  // }
   handleSearchInput = (e) => {
     this.setState({searchInput: e.target.value})
   }
@@ -22,21 +24,22 @@ class SearchEngine extends Component {
       mode: 'cors'
     })
      .then(res => res.json())
-     .then(resJSON => Object.entries(resJSON))
-     .then(resJSON => this.setState({ pokemonData: resJSON }))
+    //  .then(resJSON => Object.entries(resJSON))
+     .then(resJSON => {
+        this.setState({ pokemonData: resJSON })
+      })
      .catch(err => console.log("Error", err) )
      this.setState({ searchInput: '' })
   }
   render() {
-    console.log(this) 
+    console.log(this.state.pokemonData)
     return (
       <Fragment>
         <form onSubmit={this.fetchPokeData}>
           <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
           <input type='submit'/>
         </form>
-        {/* {this.state.pokemonData.map((item) => <div>{item}</div>)} */}
-        <PokedexInterface pokemonData={this.state.pokemonData}/>
+        <PokedexInterface pokemonInfo={this.state.pokemonData}/>
       </Fragment>
     );
   }

@@ -1,13 +1,15 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 class PokedexInterface extends Component {
-  render() { 
+  render() {
+    console.log(this.props.pokemonInfo)
     return ( 
-      <Fragment>
-        
-      </Fragment>
+      <div>
+        {/* {this.props.pokemonInfo.name} */}
+      </div>
     );
   }
 }
- 
+
 export default PokedexInterface;
+
