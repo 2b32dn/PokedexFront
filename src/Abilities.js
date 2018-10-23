@@ -2,9 +2,9 @@ import React from 'react'
 
 export const Abilities = ({ abilities }) => (
   <div>
-    {console.log(abilities)}
+    <h3>Abilities: </h3> 
     {abilities.map(abilityInfo => (
-      <div>{abilityInfo.ability.name}</div>
+      <div key={abilityInfo.ability.name}>{abilityInfo.ability.name}</div>
     ))}
   </div>
 )

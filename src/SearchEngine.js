@@ -35,7 +35,7 @@ class SearchEngine extends Component {
           <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
           <input type='submit'/>
         </form>
-        {!this.state.pokemonData ? <div>No fetch</div>:<PokedexInterface pokemonInfo={this.state.pokemonData}/>}
+        {!this.state.pokemonData ? <div></div>:<PokedexInterface pokemonInfo={this.state.pokemonData}/>}
       </Fragment>
     );
   }
