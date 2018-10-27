@@ -8,7 +8,7 @@ class PokedexInterface extends Component {
     return ( 
       <div>
         {abilities && <Abilities abilities={abilities}/>}
-        Working
+        
       </div>
     );
   }
