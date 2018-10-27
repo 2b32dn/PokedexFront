@@ -2,9 +2,9 @@ import React from 'react';
 
 export const Stats = ({ stats }) => (
   <div>
-    <h3> Base Stats: </h3>
+    <h3>Base Stats: </h3>
     {stats.map(statsInfo => (
-      <div key={statsInfo.stat.name}>{statsInfo.stat.name} {statsInfo.base_stat} {console.log(statsInfo)}</div>
+      <div key={statsInfo.stat.name}>{statsInfo.stat.name} {statsInfo.base_stat} </div>
     ))}
   </div>
 )

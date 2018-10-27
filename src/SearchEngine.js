@@ -21,7 +21,6 @@ class SearchEngine extends Component {
       mode: 'cors'
     })
      .then(res => res.json())
-    //  .then(resJSON => Object.entries(resJSON))
      .then(resJSON => {
         this.setState({ pokemonData: resJSON })
       })
