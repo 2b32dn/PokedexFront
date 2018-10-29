@@ -8,7 +8,8 @@ class SearchEngine extends Component {
     super();
     this.state = {
       searchInput: '',
-      pokemonData: null
+      pokemonData: null,
+      pokemonUrl: ''
     }
   }
   handleSearchInput = (e) => {

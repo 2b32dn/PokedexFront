@@ -9,7 +9,7 @@ import Capitalize from './Capitalize'
 
 class PokedexInterface extends Component {
   render() {
-    const { abilities,moves, name, stats,sprites, types } = this.props.pokemonInfo
+    const { abilities, moves, name, stats, species, sprites, types } = this.props.pokemonInfo
     console.log(this.props.pokemonInfo)
     return ( 
       <Fragment>
@@ -22,6 +22,10 @@ class PokedexInterface extends Component {
         {<Abilities abilities={abilities}/>}
         {<Stats stats={stats}/>}
         {<Moves moves={moves}/>}
+        {species.url}
+        <button>Previous</button>
+        <button>Next</button>
+        {console.log(this.props.pokemonState)}
       </Fragment>
     );
   }
