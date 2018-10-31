@@ -1,5 +1,6 @@
 import React, { Component,Fragment } from 'react'
 import PokedexInterface from './PokedexInterface'
+import PreviousPokemon from './PreviousPokemon'
 
 const API = 'https://pokeapi.co/api/v2/pokemon/'
 
@@ -9,7 +10,6 @@ class SearchEngine extends Component {
     this.state = {
       searchInput: '',
       pokemonData: null,
-      pokemonUrl: ''
     }
   }
   handleSearchInput = (e) => {
@@ -35,7 +35,8 @@ class SearchEngine extends Component {
           <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
           <input type='submit'/>
         </form>
-        {!this.state.pokemonData ? <div></div>:<PokedexInterface pokemonInfo={this.state.pokemonData}/>}
+        {!this.state.pokemonData ? <div></div> : <PokedexInterface pokemonInfo={this.state.pokemonData} pokemonPreviousInfo={this.state.pokemonData}/>}
+        {<PreviousPokemon pokemonInfo={this.state.pokemonData}/>}
       </Fragment>
     );
   }

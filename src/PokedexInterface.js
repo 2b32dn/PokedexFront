@@ -1,4 +1,4 @@
-import React, { Component, Fragment} from 'react'
+import React, { Component} from 'react'
 import Abilities from './Abilities'
 import Moves from './Moves'
 import Stats from './Stats'
@@ -8,25 +8,38 @@ import Capitalize from './Capitalize'
 
 
 class PokedexInterface extends Component {
+  constructor(){
+    super();
+    this.state = {
+      pokemonData: null
+    }
+  }
+
   render() {
-    const { abilities, moves, name, stats, species, sprites, types } = this.props.pokemonInfo
+    const { abilities, moves, id, name, stats, species, sprites, types } = this.props.pokemonInfo
     console.log(this.props.pokemonInfo)
     return ( 
-      <Fragment>
+      <div className="pokeMain">
         <h2>{Capitalize(name)}</h2> 
-        <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
-        <img alt={Capitalize(name) + "'s Back Picture"} src={sprites.back_default}/>
-        <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/>
-        <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/>
-        {<Types types={types}/>}
-        {<Abilities abilities={abilities}/>}
-        {<Stats stats={stats}/>}
-        {<Moves moves={moves}/>}
+        <div>
+          Normal:
+          <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
+          <img alt={Capitalize(name) + "'s Back Picture"} src={sprites.back_default}/>
+          Shiny:
+          <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/>
+          <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/>
+        </div>
+        <div>
+          {id}
+          {<Types types={types}/>}
+          {<Abilities abilities={abilities}/>}
+          {<Stats stats={stats}/>}
+        </div>
+        <div>
+          {/* {<Moves moves={moves}/>} */}
+        </div>
         {species.url}
-        <button>Previous</button>
-        <button>Next</button>
-        {console.log(this.props.pokemonState)}
-      </Fragment>
+      </div>
     );
   }
 }
