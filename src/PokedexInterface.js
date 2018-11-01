@@ -38,7 +38,6 @@ class PokedexInterface extends Component {
         <div>
           {/* {<Moves moves={moves}/>} */}
         </div>
-        {species.url}
       </div>
     );
   }

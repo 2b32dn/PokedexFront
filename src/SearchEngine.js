@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from 'react'
 import PokedexInterface from './PokedexInterface'
 import PreviousPokemon from './PreviousPokemon'
+import NextPokemon from './NextPokemon'
 
 const API = 'https://pokeapi.co/api/v2/pokemon/'
 
@@ -30,14 +31,22 @@ class SearchEngine extends Component {
   }
   render() {
     return (
-      <Fragment>
+      <div>
         <form onSubmit={this.fetchPokeData}>
           <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
           <input type='submit'/>
         </form>
-        {!this.state.pokemonData ? <div></div> : <PokedexInterface pokemonInfo={this.state.pokemonData} pokemonPreviousInfo={this.state.pokemonData}/>}
-        {<PreviousPokemon pokemonInfo={this.state.pokemonData}/>}
-      </Fragment>
+       
+        {!this.state.pokemonData ? 
+          <div></div> 
+          : 
+          <div>
+            {<PreviousPokemon pokemonInfo={this.state.pokemonData}/>}
+            {<PokedexInterface pokemonInfo={this.state.pokemonData}/>}
+            {<NextPokemon pokemonInfo={this.state.pokemonData}/>}
+          </div>
+        }
+      </div>
     );
   }
 }
