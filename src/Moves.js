@@ -10,9 +10,9 @@ export const Moves = ({ moves }) => (
         {moveInfo.version_group_details.map(moveDetails => {
           return (moveDetails.level_learned_at > 0) ?
           <div>
-            {moveDetails.level_learned_at}
+            {/* {moveDetails.level_learned_at}
             {moveDetails.move_learn_method.name}
-            {moveDetails.version_group.name}
+            {moveDetails.version_group.name} */}
           </div>
           :
           null
