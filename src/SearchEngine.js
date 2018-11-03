@@ -4,6 +4,7 @@ import PreviousPokemon from './PreviousPokemon'
 import NextPokemon from './NextPokemon'
 
 const API = 'https://pokeapi.co/api/v2/pokemon/'
+const API2 = 'https://pokeapi.co/api/v2/pokemon-species/'
 
 class SearchEngine extends Component {
   constructor(){
@@ -11,6 +12,7 @@ class SearchEngine extends Component {
     this.state = {
       searchInput: '',
       pokemonData: null,
+      pokemonExtra: null
     }
   }
   handleSearchInput = (e) => {
@@ -58,9 +60,22 @@ class SearchEngine extends Component {
      .then(resJSON => {
         this.setState({ pokemonData: resJSON })
       })
-     .catch(err => console.log("Error", err) )
+     .catch(err => console.log("Fetch Error", err) )
      this.setState({ searchInput: '' })
+     this.fetchExtraPokeData()
   }
+
+  fetchExtraPokeData = () => {
+    fetch( API2 + `${this.state.searchInput}/`, {
+      method: 'GET',
+      mode: 'cors'
+    })
+      .then(res => res.json())
+      .then(resJSON => this.setState({pokemonExtra: resJSON}))
+      .catch(err => console.log("Extra Fetch", err))
+      .then(console.log("Extra Fetch Success"))
+  }
+
   render() {
     return (
       <div>
@@ -74,7 +89,7 @@ class SearchEngine extends Component {
           : 
           <div>
             {<PreviousPokemon previousBtn={this.handlePreviousPokemon} />}
-            {<PokedexInterface pokemonInfo={this.state.pokemonData}/>}
+            {<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}
             {<NextPokemon nextBtn={this.handleNextPokemon}/>}
           </div>
         }

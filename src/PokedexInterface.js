@@ -17,26 +17,28 @@ class PokedexInterface extends Component {
 
   render() {
     const { abilities, moves, id, name, stats, sprites, types } = this.props.pokemonInfo
+    const {flavor_text_entries} = this.props.pokemonExtra
     console.log(this.props.pokemonInfo)
+    console.log(this.props.pokemonExtra)
     return ( 
       <div className="pokeMain">
         <h2>{Capitalize(name)}</h2> 
         <div>
           Normal:
-          <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
+          {/* <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/> */}
           {/* <img alt={Capitalize(name) + "'s Back Picture"} src={sprites.back_default}/> */}
           Shiny:
-          <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/>
+          {/* <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/> */}
           {/* <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/> */}
         </div>
         <div>
-          {id}
+          {/* {id}
           {<Types types={types}/>}
           {<Abilities abilities={abilities}/>}
-          {<Stats stats={stats}/>}
+          {<Stats stats={stats}/>} */}
         </div>
         <div>
-          {/* {<Moves moves={moves}/>} */}
+          {<Moves moves={moves}/>}
         </div>
       </div>
     );
