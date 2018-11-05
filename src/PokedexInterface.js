@@ -22,10 +22,11 @@ class PokedexInterface extends Component {
     const { abilities, moves, id, name, stats, sprites, types } = this.props.pokemonInfo
     const { flavor_text_entries, genera } = this.props.pokemonExtra
     console.log(this.props.pokemonInfo)
-    console.log(this.props.pokemonExtra)
+    // console.log(this.props.pokemonExtra)
     return ( 
       <div className="pokeMain">
         <h2>{Capitalize(name)}</h2> 
+        {id}
         <div>
           Normal:
           <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
@@ -35,19 +36,18 @@ class PokedexInterface extends Component {
           {/* <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/> */}
         </div>
         <div>
-          {/* {id} */}
+          {<Genus genera={genera}/>}
+        </div>
+        <div>
+          {<Flavor flavor_text_entries={flavor_text_entries}/>}
+        </div>
+        <div>
           {<Types types={types}/>}
           {<Abilities abilities={abilities}/>}
           {<Stats stats={stats}/>}
         </div>
         <div>
-          {/* {<Moves moves={moves}/>} */}
-        </div>
-        <div>
-          {<Genus genera={genera}/>}
-        </div>
-        <div>
-          {<Flavor flavor_text_entries={flavor_text_entries}/>}
+          {<Moves moves={moves}/>}
         </div>
       </div>
     );

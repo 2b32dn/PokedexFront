@@ -10,12 +10,11 @@ export const Moves = ({ moves }) => (
         {moveInfo.version_group_details.map(moveDetails => {
           return (moveDetails.level_learned_at > 0) ?
           <div>
-            {moveDetails.level_learned_at}
-            {moveDetails.move_learn_method.name}
-            {moveDetails.version_group.name}
+            Level: {moveDetails.level_learned_at}
+            {Capitalize(moveDetails.version_group.name.replace(/-/g, ' '))}
           </div>
           :
-          null
+          <div></div>
         })}
       </div>
     ))}

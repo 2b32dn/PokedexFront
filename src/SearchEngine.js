@@ -3,6 +3,7 @@ import PokedexInterface from './PokedexInterface'
 import PreviousPokemon from './PreviousPokemon'
 import NextPokemon from './NextPokemon'
 
+
 const API = 'https://pokeapi.co/api/v2/pokemon/'
 const API2 = 'https://pokeapi.co/api/v2/pokemon-species/'
 
@@ -20,12 +21,14 @@ class SearchEngine extends Component {
   }
   handlePreviousPokemon = () => {
     console.log('success! handlePreviousPokemon')
+    this.fetchExtraPreviousPokeData()
     this.fetchPreviousPokeData()
   }
 
   handleNextPokemon = () => {
     console.log('success! handleNextPokemon')
     this.fetchNextPokeData()
+    this.fetchExtraNextPokeData()
   }
 
   fetchPreviousPokeData = () => {
@@ -36,7 +39,6 @@ class SearchEngine extends Component {
       .then(res => res.json())
       .then(resJSON => this.setState({ pokemonData: resJSON}))
       .catch(err => console.log(err))
-      .then(console.log("Fetch P Succesful"))
   }
 
   fetchNextPokeData = () => {
@@ -47,7 +49,6 @@ class SearchEngine extends Component {
       .then(res => res.json())
       .then(resJSON => this.setState({ pokemonData: resJSON}))
       .catch(err => console.log(err))
-      .then(console.log("Fetch N Succesful"))
   }
 
   fetchPokeData = (e) => {
@@ -73,7 +74,26 @@ class SearchEngine extends Component {
       .then(res => res.json())
       .then(resJSON => this.setState({pokemonExtra: resJSON}))
       .catch(err => console.log("Extra Fetch", err))
-      .then(console.log("Extra Fetch Success"))
+  }
+
+  fetchExtraPreviousPokeData = () => {
+    fetch(API2 + `${this.state.pokemonData.id - 1}/`, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(res => res.json())
+    .then(resJSON => this.setState({pokemonExtra: resJSON}))
+    .catch(err => console.log("Extra Previous Fetch", err))
+  }
+
+  fetchExtraNextPokeData = () => {
+    fetch(API2 + `${this.state.pokemonData.id + 1}/`, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(res => res.json())
+    .then(resJSON => this.setState({pokemonExtra: resJSON}))
+    .catch(err => console.log("Next Extra Fetch", err))
   }
 
   render() {
@@ -89,8 +109,9 @@ class SearchEngine extends Component {
           : 
           <div>
             {<PreviousPokemon previousBtn={this.handlePreviousPokemon} />}
-            {<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}
             {<NextPokemon nextBtn={this.handleNextPokemon}/>}
+            {<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}
+            
           </div>
         }
       </div>

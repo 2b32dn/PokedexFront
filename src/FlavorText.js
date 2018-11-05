@@ -1,4 +1,5 @@
 import React from 'react';
+import Capitalize from './Capitalize'
 
 export const Flavor = ({flavor_text_entries}) => (
   <div>
@@ -8,10 +9,10 @@ export const Flavor = ({flavor_text_entries}) => (
         return (flavor.language.name === 'en') ?
         <div>
           <h3>
-            {flavor.version.name}
+            {Capitalize(flavor.version.name)}
           </h3>
           <div key={index}>
-            {flavor.flavor_text}
+            {Capitalize(flavor.flavor_text)}
           </div>
         </div>
         :
