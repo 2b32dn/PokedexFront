@@ -6,8 +6,7 @@ export const Stats = ({ stats }) => (
     <h3>Base Stats: </h3>
     {stats.reverse().map(statsInfo => (
       <div key={statsInfo.stat.name}>
-        {Capitalize(statsInfo.stat.name.replace(/-/g, ' '))} 
-        {statsInfo.base_stat}
+        {Capitalize(statsInfo.stat.name.replace(/-/g, ' ')) + ' ' + statsInfo.base_stat} 
       </div>
     ))}
   </div>

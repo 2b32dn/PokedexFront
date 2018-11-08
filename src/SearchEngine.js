@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import PokedexInterface from './PokedexInterface'
 import PreviousPokemon from './PreviousPokemon'
 import NextPokemon from './NextPokemon'
+import Capitalize from './Capitalize'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import {Header} from './Styled'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const API = 'https://pokeapi.co/api/v2/pokemon/'
@@ -13,8 +17,14 @@ class SearchEngine extends Component {
     this.state = {
       searchInput: '',
       pokemonData: null,
-      pokemonExtra: null
+      pokemonExtra: null,
+      collapsed: true
     }
+  }
+  toggleNavbar = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   }
   handleSearchInput = (e) => {
     this.setState({searchInput: e.target.value})
@@ -99,19 +109,42 @@ class SearchEngine extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.fetchPokeData}>
-          <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput}/>
-          <input type='submit'/>
-        </form>
-       
+        <Navbar color="faded" light>
+          <NavbarBrand href="/" className="mr-auto">Pokedex</NavbarBrand>
+          <form onSubmit={this.fetchPokeData}>
+            <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput} required />
+            <input type='submit'/>
+          </form>
+          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+          <Collapse isOpen={!this.state.collapsed} navbar>
+            <Nav navbar>
+              <NavItem>
+                <NavLink href="/components/">Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+
         {!this.state.pokemonData ? 
           <div></div> 
           : 
-          <div>
-            {<PreviousPokemon previousBtn={this.handlePreviousPokemon} />}
-            {<NextPokemon nextBtn={this.handleNextPokemon}/>}
-            {<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}
-            
+          <div className="header">
+
+            <Header>
+              <div className="previousBtn">{<PreviousPokemon previousBtn={this.handlePreviousPokemon} />}</div>
+              <h1 className="pkmnName">
+                {Capitalize(this.state.pokemonData.name)}
+              </h1>
+              <div className="nextBtn">{<NextPokemon nextBtn={this.handleNextPokemon}/>}</div>
+            </Header>
+
+            <div>
+              <div>{<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}</div>
+            </div>
+
           </div>
         }
       </div>

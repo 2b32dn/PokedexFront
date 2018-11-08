@@ -5,7 +5,7 @@ class PreviousPokemon extends Component {
     // console.log('props', this.props)
     return (
       <Fragment>
-        <button onClick={this.props.previousBtn}>Previous Pokemon</button>
+        <button onClick={this.props.previousBtn}>Prev</button>
       </Fragment>
     );
   }

@@ -4,10 +4,13 @@ import Moves from './Moves'
 import Stats from './Stats'
 import Types from './Types'
 
+
 import Genus from './Genus'
 import Flavor from './FlavorText'
 
 import Capitalize from './Capitalize'
+
+import {Top} from './Styled'
 
 
 class PokedexInterface extends Component {
@@ -21,34 +24,46 @@ class PokedexInterface extends Component {
   render() {
     const { abilities, moves, id, name, stats, sprites, types } = this.props.pokemonInfo
     const { flavor_text_entries, genera } = this.props.pokemonExtra
-    console.log(this.props.pokemonInfo)
+    // console.log(this.props.pokemonInfo)
     // console.log(this.props.pokemonExtra)
     return ( 
       <div className="pokeMain">
-        <h2>{Capitalize(name)}</h2> 
-        {id}
-        <div>
-          Normal:
-          <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
-          {/* <img alt={Capitalize(name) + "'s Back Picture"} src={sprites.back_default}/> */}
-          Shiny:
-          <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/>
-          {/* <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/> */}
-        </div>
-        <div>
-          {<Genus genera={genera}/>}
-        </div>
+        <Top className="top">
+
+          <div className="img">
+            <div>
+              <h3>Normal:</h3>
+              <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
+              <img alt={Capitalize(name) + "'s Back Picture"} src={sprites.back_default}/>
+            </div>
+            <div>
+              <h3>Shiny:</h3>
+              <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/>
+              <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/>
+            </div>
+          </div>
+
+          <div className="phenoType">
+            <div>
+              <h3>Pokemon National: #{id}</h3>
+              {<Genus genera={genera}/>}
+              {<Types types={types}/>}
+              {<Abilities abilities={abilities}/>}
+            </div>
+            <div>
+              {<Stats stats={stats}/>}
+            </div>
+          </div>
+        </Top>
+
         <div>
           {<Flavor flavor_text_entries={flavor_text_entries}/>}
         </div>
-        <div>
-          {<Types types={types}/>}
-          {<Abilities abilities={abilities}/>}
-          {<Stats stats={stats}/>}
-        </div>
+        
         <div>
           {<Moves moves={moves}/>}
         </div>
+
       </div>
     );
   }

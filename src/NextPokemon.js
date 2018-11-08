@@ -5,7 +5,7 @@ class NextPokemon extends Component {
     // console.log('props', this.props)
     return (
       <Fragment>
-        <button onClick={this.props.nextBtn}>Next Pokemon</button>
+        <button onClick={this.props.nextBtn}>Next</button>
       </Fragment>
     );
   }

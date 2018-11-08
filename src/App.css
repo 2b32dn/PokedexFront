@@ -1,7 +1,26 @@
-.App {
+
+/* .pokeMain{
   text-align: center;
+} */
+.top{
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
 }
 
-.pokeMain{
-  /* border: 1px solid black; */
+.img{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.phenoType{
+  display: flex;
+}
+
+.buttons{
+  display: flex;
+}
+
+.header{
+  text-align: center;
 }
