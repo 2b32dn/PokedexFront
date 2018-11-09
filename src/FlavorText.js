@@ -3,14 +3,14 @@ import Capitalize from './Capitalize'
 
 export const Flavor = ({flavor_text_entries}) => (
   <div>
-    <h3>Flavor Text</h3>
+    <h1>Flavor Text</h1>
     <div>
       {flavor_text_entries.map((flavor, index) => {
         return (flavor.language.name === 'en') ?
         <div>
-          <h3>
+          <h4>
             {Capitalize(flavor.version.name)}
-          </h3>
+          </h4>
           <div key={index}>
             {Capitalize(flavor.flavor_text)}
           </div>

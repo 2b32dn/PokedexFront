@@ -1,16 +1,10 @@
-
-/* .pokeMain{
-  text-align: center;
-} */
 .top{
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-}
+  display: inline-flex;
+  max-width: 40%;
+} 
 
 .img{
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
 }
 
 .phenoType{
@@ -21,6 +15,25 @@
   display: flex;
 }
 
+/* SearchEngine */
 .header{
   text-align: center;
+  background: rgba(223, 0, 0, 0.664);
+}
+
+.pkmnInterface{
+  border-left: 120px solid rgba(223, 0, 0, 0.664);
+  border-right: 120px solid rgba(223, 0, 0, 0.664);
+  border-top: 80px solid rgba(223, 0, 0, 0.664);
+  border-bottom: 120px solid rgba(223, 0, 0, 0.664);
+}
+
+.pokeMain{
+  border: 2px solid black;
+  padding: 20px;
+}
+
+h1{
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
 }

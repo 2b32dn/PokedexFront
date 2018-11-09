@@ -3,13 +3,17 @@ import styled from 'styled-components'
 const Header = styled.div`
   display: grid
   grid-template-columns: 1fr 1fr 1fr
+  justify-items: center
+  align-items: center
+  border-top: 1px solid black
+  border-radius: 20px 20px 0 0
 `
 const Top = styled.div`
   display: grid
-  grid-template-columns: 1fr 1fr
-  justify-items: center
-  align-items: center
-  border: 1px solid black
+  // grid-template-columns: 1fr 1fr
+  // justify-items: center
+  // align-items: center
+
 `
 
 export {Header, Top}

@@ -111,18 +111,14 @@ class SearchEngine extends Component {
       <div>
         <Navbar color="faded" light>
           <NavbarBrand href="/" className="mr-auto">Pokedex</NavbarBrand>
-          <form onSubmit={this.fetchPokeData}>
-            <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput} required />
-            <input type='submit'/>
-          </form>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <form onSubmit={this.fetchPokeData}>
+                  <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput} placeholder="Search" required />
+                  <input type='submit' value="Search"/>
+                </form>
               </NavItem>
             </Nav>
           </Collapse>
@@ -131,20 +127,17 @@ class SearchEngine extends Component {
         {!this.state.pokemonData ? 
           <div></div> 
           : 
-          <div className="header">
-
-            <Header>
+          <div>
+            <Header className="header">
               <div className="previousBtn">{<PreviousPokemon previousBtn={this.handlePreviousPokemon} />}</div>
-              <h1 className="pkmnName">
+              <h6 className="pkmnName">
                 {Capitalize(this.state.pokemonData.name)}
-              </h1>
+              </h6>
               <div className="nextBtn">{<NextPokemon nextBtn={this.handleNextPokemon}/>}</div>
             </Header>
-
-            <div>
-              <div>{<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}</div>
+            <div className="pkmnInterface">
+              {<PokedexInterface pokemonInfo={this.state.pokemonData} pokemonExtra={this.state.pokemonExtra}/>}
             </div>
-
           </div>
         }
       </div>

@@ -7,10 +7,10 @@ export const Abilities = ({ abilities }) => (
     {abilities.map(abilityInfo => {
       return (!abilityInfo.is_hidden) ? 
       <div key={abilityInfo.ability.name}> 
-        <h5>Main Ability: </h5> {Capitalize(abilityInfo.ability.name.replace(/-/g, ' '))}
+        <h6>Main Ability: </h6> {Capitalize(abilityInfo.ability.name.replace(/-/g, ' '))}
       </div> :
       <div key={abilityInfo.ability.name}>
-        <h5>Hidden Ability: </h5> {Capitalize(abilityInfo.ability.name.replace(/-/g, ' '))} 
+        <h6>Hidden Ability: </h6> {Capitalize(abilityInfo.ability.name.replace(/-/g, ' '))} 
       </div>
     })}
   </div>

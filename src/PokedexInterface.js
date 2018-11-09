@@ -24,20 +24,22 @@ class PokedexInterface extends Component {
   render() {
     const { abilities, moves, id, name, stats, sprites, types } = this.props.pokemonInfo
     const { flavor_text_entries, genera } = this.props.pokemonExtra
-    // console.log(this.props.pokemonInfo)
-    // console.log(this.props.pokemonExtra)
+    console.log(this.props.pokemonInfo)
+    console.log(this.props.pokemonExtra)
     return ( 
       <div className="pokeMain">
-        <Top className="top">
-
+        <h1>Characteristics</h1>
+        <Top>
           <div className="img">
             <div>
-              <h3>Normal:</h3>
+              <h3>{Capitalize(name).replace(/-/g, ' ')}</h3>
+              {<Genus genera={genera}/>}
+              <h6>Normal:</h6>
               <img alt={Capitalize(name) + "'s Front Picture"} src={sprites.front_default}/>
               <img alt={Capitalize(name) + "'s Back Picture"} src={sprites.back_default}/>
             </div>
             <div>
-              <h3>Shiny:</h3>
+              <h6>Shiny:</h6>
               <img alt={Capitalize(name) + "'s Shiny Front Picture"} src={sprites.front_shiny}/>
               <img alt={Capitalize(name) + "'s Shiny Back Picture"} src={sprites.back_shiny}/>
             </div>
@@ -45,8 +47,7 @@ class PokedexInterface extends Component {
 
           <div className="phenoType">
             <div>
-              <h3>Pokemon National: #{id}</h3>
-              {<Genus genera={genera}/>}
+              <h6>Pokemon National: #{id}</h6>
               {<Types types={types}/>}
               {<Abilities abilities={abilities}/>}
             </div>
