@@ -3,7 +3,7 @@ import PokedexInterface from './PokedexInterface'
 import PreviousPokemon from './PreviousPokemon'
 import NextPokemon from './NextPokemon'
 import Capitalize from './Capitalize'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import {Header} from './Styled'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -111,19 +111,19 @@ class SearchEngine extends Component {
       <div>
         <Navbar color="faded" light>
           <NavbarBrand href="/" className="mr-auto">Pokedex</NavbarBrand>
+          <form onSubmit={this.fetchPokeData}>
+                  <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput} placeholder="Search" required />
+                  <input type='submit' value="Search"/>
+                </form>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <form onSubmit={this.fetchPokeData}>
-                  <input type='text' value={this.state.searchInput} onChange={this.handleSearchInput} placeholder="Search" required />
-                  <input type='submit' value="Search"/>
-                </form>
+                search bar
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
-
         {!this.state.pokemonData ? 
           <div></div> 
           : 

@@ -51,9 +51,9 @@ class PokedexInterface extends Component {
               {<Types types={types}/>}
               {<Abilities abilities={abilities}/>}
             </div>
-            <div>
-              {<Stats stats={stats}/>}
-            </div>
+          </div>
+          <div>
+            {<Stats stats={stats}/>}
           </div>
         </Top>
 
